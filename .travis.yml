@@ -22,5 +22,5 @@ before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
 install: npm install
 script:
-- 'if [ "$TRAVIS_PULL_REQUEST" != "true" ]; then bash ./ci/on_pr.sh; fi'
-- 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./ci/on_pr.sh; bash ./release.sh; fi'
+- 'if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then bash ./ci/on_pr.sh; fi'
+- 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then bash ./ci/on_pr.sh; bash ./release.sh; fi'
