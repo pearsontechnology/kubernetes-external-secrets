@@ -28,12 +28,12 @@ before_install:
   - curl -Lo helm.tgz https://get.helm.sh/helm-v2.16.0-linux-amd64.tar.gz && tar -zxvf
     helm.tgz && sudo mv linux-amd64/helm /usr/local/bin/helm
 install: npm install
-before_script: greenkeeper-lockfile-update
+before_script: 'if [ $TRAVIS_BRANCH == "master" ]; then greenkeeper-lockfile-update; fi'
 script:
   - npm test
-  - npm run test-e2e
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm run test-e2e; fi'
   - helm lint charts/kubernetes-external-secrets
-after_script: greenkeeper-lockfile-upload
+after_script: 'if [ $TRAVIS_BRANCH == "master" ]; then greenkeeper-lockfile-upload; fi'
 after_success:
-  - bash release.sh
+  - 'if [ $TRAVIS_BRANCH == "master" ]; then bash release.sh; fi'
 
