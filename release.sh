@@ -15,7 +15,8 @@ if [ -z "$ALLOW_DIRTY" ]; then
 fi
 
 SHA=$(git rev-parse --short HEAD)
-TAG=`git describe --tags --abbrev=0 | awk -F. '{$NF+=1; OFS="."; print $0}'`
+_tag=`git describe --tags --abbrev=0 | awk -F. '{$NF+=1; print $0}'`
+TAG=`echo ${_tag} | awk 'BEGIN {OFS="."}; {$1=$1;print $0};'`
 
 echo "Next version is: $TAG"
 
