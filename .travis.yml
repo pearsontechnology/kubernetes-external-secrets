@@ -17,6 +17,9 @@ before_install:
     -in ${TRAVIS_BUILD_DIR}/ci/kubernetes-external-secrets.enc -out ~/.ssh/travis_rsa -d
   - chmod 600 ~/.ssh/travis_rsa
   - ssh-add ~/.ssh/travis_rsa
+  # Setting git remote to SSH
+  - git remote -v
+  - git remote set-url origin git@github.com:pearsontechnology/kubernetes-external-secrets.git
   # package-lock.json was introduced in npm@5
   - "[[ $(node -v) =~ ^v9.*$ ]] || npm install -g npm@latest"
   - npm install -g greenkeeper-lockfile
