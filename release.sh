@@ -1,18 +1,6 @@
 #!/bin/sh
 
-set -e
-
-ALLOW_DIRTY="true"
-
-if [ -z "$ALLOW_DIRTY" ]; then
-    if ! output=$(git status --porcelain) || ! [ -z "$output" ]; then
-        git status
-        echo ""
-        echo "Ensure working directory is clean before releasing."
-        echo ""
-        exit 1
-    fi
-fi
+set -ex
 
 SHA=$(git rev-parse --short HEAD)
 _tag=`git describe --tags --abbrev=0 | awk -F. '{$NF+=1; print $0}'`
@@ -33,5 +21,8 @@ docker tag pearsontechnology/kubernetes-external-secrets:$SHA pearsontechnology/
 docker tag pearsontechnology/kubernetes-external-secrets:$SHA pearsontechnology/kubernetes-external-secrets:latest
 
 git add --all && git commit -m "chore(release): pearsontechnology/kubernetes-external-secrets:$TAG [ci skip]"
-git push --follow-tags origin master && docker push pearsontechnology/kubernetes-external-secrets:$TAG && docker push pearsontechnology/kubernetes-external-secrets:latest
+git push --follow-tags origin master
+
+
+docker push pearsontechnology/kubernetes-external-secrets:$TAG && docker push pearsontechnology/kubernetes-external-secrets:latest
 
