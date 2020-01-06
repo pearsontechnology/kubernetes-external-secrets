@@ -57,5 +57,9 @@ typings/
 # next.js build output
 .next
 
-
+# IDE genereated files
 .idea
+
+# Files with sensitive data
+TravisCIDeployKey
+TravisCIDeployKey.pub

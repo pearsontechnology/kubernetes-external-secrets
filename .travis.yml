@@ -1,30 +1,31 @@
 sudo: false
 language: node_js
 services:
-  - docker
+- docker
 branches:
   only:
-    - dev
-    - master
+  - dev
+  - master
 matrix:
   fast_finish: true
   include:
-    - node_js: '12'
+  - node_js: '12'
 # https://github.com/greenkeeperio/greenkeeper-lockfile#npm
 before_install:
-  - eval "$(ssh-agent -s)"
-  - openssl aes-256-cbc -K $encrypted_e58dbf8351c6_key -iv $encrypted_e58dbf8351c6_iv
-    -in ${TRAVIS_BUILD_DIR}/ci/external-secrets-deploykey.enc -out ~/.ssh/travis_rsa
-    -d
+  - openssl aes-256-cbc -K $encrypted_06af7147f9c8_key -iv $encrypted_06af7147f9c8_iv
+    -in ${TRAVIS_BUILD_DIR}/ci/kubernetes-external-secrets.enc -out ~/.ssh/travis_rsa -d
   - chmod 600 ~/.ssh/travis_rsa
   - ssh-add ~/.ssh/travis_rsa
   # package-lock.json was introduced in npm@5
-  - '[[ $(node -v) =~ ^v9.*$ ]] || npm install -g npm@latest' # skipped when using node 9
+  - "[[ $(node -v) =~ ^v9.*$ ]] || npm install -g npm@latest"
   - npm install -g greenkeeper-lockfile
   # kubectl, kind, helm
-  - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
-  - curl -Lo kind https://github.com/kubernetes-sigs/kind/releases/download/v0.5.1/kind-linux-amd64 && chmod +x kind && sudo mv kind /usr/local/bin/
-  - curl -Lo helm.tgz https://get.helm.sh/helm-v2.16.0-linux-amd64.tar.gz && tar -zxvf helm.tgz && sudo mv linux-amd64/helm /usr/local/bin/helm
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+    && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+  - curl -Lo kind https://github.com/kubernetes-sigs/kind/releases/download/v0.5.1/kind-linux-amd64
+    && chmod +x kind && sudo mv kind /usr/local/bin/
+  - curl -Lo helm.tgz https://get.helm.sh/helm-v2.16.0-linux-amd64.tar.gz && tar -zxvf
+    helm.tgz && sudo mv linux-amd64/helm /usr/local/bin/helm
 install: npm install
 before_script: greenkeeper-lockfile-update
 script:
@@ -34,6 +35,4 @@ script:
 after_script: greenkeeper-lockfile-upload
 after_success:
   - bash release.sh
-env:
-  global:
-    secure: kx4trtcFBt6Qz4tN8PApGqtvSgoHxwYCkOx/rnEHTQ1yh2B7rhuOVOvlZ0tb1Lqvfn/m53YWgXLci96c9sVYk27BN6p4A8LjATpEcJxnHPSoD3OblXNLObTpI7SqVbJuv1kI5bTW3Xj4O3JbeK2a5VBMMn9oeViMj3v2mJDRoxklSEsA1fwZJLIZ+0BypV5hzT+U+B4PecwXQJEX5Ph9qSHH60wCeVszX1dhDM9QhKrRf+XRIxVOuU/NaaWFBw6aFNR4/0yAEIutuYaQEI1fxVjf9doHzkgWy77lovoxvvH/oCex/svKfu4rtUPMADVcuzMYwg54dUgQrOxHx8wol2e2GhNSK/ssVQD8Owz7Dq1/EP5YXtxBOPxqvqmND+/0SbUmTKmKY+Bnk5xKTPITWzKdYgV+4njW3DzXK/r6SVFvqBPxRE6dnGDqitIHaDIa9Rl29hAUiStl11hWQD/5d9U1ft646D4JmVDZz7Wgx7XuMT0B9I8+bHZT2TTpLw8aRH6+wZjuG7gJDG2BDNYBWrtry04bW3Ht8/h2kVyAFgezfruwIhixw6VQqg5znl4vYOg5Iv/kq11PkPW/T3q3aXNxtVOOqFejklpLbtbm8BJjFTFp0Zlu2MgcJlU92vFssegjcUYho2Wp8iHSUDcYSqX4SCM3oaDWYTE8NthNXUo=
+
