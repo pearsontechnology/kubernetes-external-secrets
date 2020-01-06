@@ -1,4 +1,5 @@
 [![Join Slack](https://img.shields.io/badge/Join%20us%20on-Slack-e01563.svg)](https://godaddy-oss-slack.herokuapp.com/)
+[![Build Status](https://travis-ci.org/pearsontechnology/kubernetes-external-secrets.svg?branch=master)](https://travis-ci.org/pearsontechnology/kubernetes-external-secrets)
 
 # Kubernetes External Secrets
 
