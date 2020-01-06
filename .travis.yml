@@ -12,6 +12,7 @@ matrix:
   - node_js: '12'
 # https://github.com/greenkeeperio/greenkeeper-lockfile#npm
 before_install:
+  - eval "$(ssh-agent -s)"
   - openssl aes-256-cbc -K $encrypted_06af7147f9c8_key -iv $encrypted_06af7147f9c8_iv
     -in ${TRAVIS_BUILD_DIR}/ci/kubernetes-external-secrets.enc -out ~/.ssh/travis_rsa -d
   - chmod 600 ~/.ssh/travis_rsa

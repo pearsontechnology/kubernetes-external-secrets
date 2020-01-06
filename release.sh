@@ -30,5 +30,5 @@ docker tag pearsontechnology/kubernetes-external-secrets:$SHA godaddy/kubernetes
 docker tag pearsontechnology/kubernetes-external-secrets:$SHA godaddy/kubernetes-external-secrets:latest
 
 git add --all && git commit -m "chore(release): pearsontechnology/kubernetes-external-secrets:$TAG"
-git push --follow-tags origin master && docker push godaddy/kubernetes-external-secrets:$TAG && docker push godaddy/kubernetes-external-secrets:latest
+git push --follow-tags origin master && docker push pearsontechnology/kubernetes-external-secrets:$TAG && docker push pearsontechnology/kubernetes-external-secrets:latest
 
