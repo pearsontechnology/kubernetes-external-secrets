@@ -26,8 +26,8 @@ perl -i -pe "s/version: [a-zA-Z0-9\.]*/version: $TAG/" charts/kubernetes-externa
 (cd charts/kubernetes-external-secrets && helm init --client-only && helm package . && helm repo index --merge ../../docs/index.yaml ./ && mv *.tgz ../../docs && mv index.yaml ../../docs)
 
 docker build -t pearsontechnology/kubernetes-external-secrets:$SHA .
-docker tag pearsontechnology/kubernetes-external-secrets:$SHA godaddy/kubernetes-external-secrets:$TAG
-docker tag pearsontechnology/kubernetes-external-secrets:$SHA godaddy/kubernetes-external-secrets:latest
+docker tag pearsontechnology/kubernetes-external-secrets:$SHA pearsontechnology/kubernetes-external-secrets:$TAG
+docker tag pearsontechnology/kubernetes-external-secrets:$SHA pearsontechnology/kubernetes-external-secrets:latest
 
 git add --all && git commit -m "chore(release): pearsontechnology/kubernetes-external-secrets:$TAG"
 git push --follow-tags origin master && docker push pearsontechnology/kubernetes-external-secrets:$TAG && docker push pearsontechnology/kubernetes-external-secrets:latest
