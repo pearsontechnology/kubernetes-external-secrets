@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker login ${DOCKER_USERNAME} ${DOCKER_PASSWORD}
+docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"

@@ -26,7 +26,7 @@ perl -i -pe "s/appVersion: [a-zA-Z0-9\.]*/appVersion: $TAG/" charts/kubernetes-e
 perl -i -pe "s/version: [a-zA-Z0-9\.]*/version: $TAG/" charts/kubernetes-external-secrets/Chart.yaml
 (cd charts/kubernetes-external-secrets && helm init --client-only && helm package . && helm repo index --merge ../../docs/index.yaml ./ && mv *.tgz ../../docs && mv index.yaml ../../docs)
 
-docker login ${DOCKER_USERNAME} ${DOCKER_PASSWORD}
+docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 
 docker build -t pearsontechnology/kubernetes-external-secrets:$SHA .
 docker tag pearsontechnology/kubernetes-external-secrets:$SHA pearsontechnology/kubernetes-external-secrets:$TAG
