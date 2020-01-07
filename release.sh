@@ -25,5 +25,6 @@ git add --all && git commit -m "chore(release): pearsontechnology/kubernetes-ext
 echo "Pushing release assets to master"
 
 git push --follow-tags origin master
+git push $TAG #Force push the tag
 
 docker push pearsontechnology/kubernetes-external-secrets:$TAG && docker push pearsontechnology/kubernetes-external-secrets:latest
