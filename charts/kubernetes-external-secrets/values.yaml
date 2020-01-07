@@ -41,7 +41,7 @@ serviceAccount:
 replicaCount: 1
 
 image:
-  repository: godaddy/kubernetes-external-secrets
+  repository: pearsontechnology/kubernetes-external-secrets
   tag: 2.2.2
   pullPolicy: IfNotPresent
 
