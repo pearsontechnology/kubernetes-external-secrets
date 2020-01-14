@@ -301,6 +301,24 @@ spec:
       property: password
 ```
 
+You can use gzip compressed secrets as following,
+
+```$xslt
+apiVersion: "kubernetes-client.io/v1"
+kind: ExternalSecret
+metadata:
+  name: abc.tls
+secretDescriptor:
+  backendType: secretsManager
+  type: kubernetes.io/tls
+  data:
+    - key: abc.crt
+      name: tls.crt
+    - key: abc.key
+      name: tls.key
+  compressed: true
+```
+
 ### Hashicorp Vault
 
 kubernetes-external-secrets supports fetching secrets from [Hashicorp Vault](https://www.vaultproject.io/), using the [Kubernetes authentication method](https://www.vaultproject.io/docs/auth/kubernetes.html).
