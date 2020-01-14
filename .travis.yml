@@ -19,6 +19,9 @@ before_install:
   - ssh-add ~/.ssh/travis_rsa
   # Setting git remote to SSH
   - git remote -v
+  - git branch
+  - ls -al
+  - pwd
   - git remote set-url origin git@github.com:pearsontechnology/kubernetes-external-secrets.git
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
