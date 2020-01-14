@@ -21,11 +21,12 @@ docker tag pearsontechnology/kubernetes-external-secrets:$SHA pearsontechnology/
 docker tag pearsontechnology/kubernetes-external-secrets:$SHA pearsontechnology/kubernetes-external-secrets:latest
 
 git checkout master
-git add --all && git commit -m "chore(release): pearsontechnology/kubernetes-external-secrets:$TAG [ci skip]" && git tag $TAG
+git add docs/ charts/
+git commit -m "chore(release): pearsontechnology/kubernetes-external-secrets:$TAG [ci skip]" && git tag $TAG
 
 echo "Pushing release assets to master"
 
 git push --follow-tags origin master
-git push $TAG #Force push the tag
+git push origin $TAG #Force push the tag
 
 docker push pearsontechnology/kubernetes-external-secrets:$TAG && docker push pearsontechnology/kubernetes-external-secrets:latest
