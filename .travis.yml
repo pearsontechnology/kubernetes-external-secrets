@@ -18,14 +18,15 @@ before_install:
   - chmod 600 ~/.ssh/travis_rsa
   - ssh-add ~/.ssh/travis_rsa
   # Setting git remote to SSH
-  - git remote -v
-  - git branch
-  - ls -al
-  - pwd
   - git remote set-url origin git@github.com:pearsontechnology/kubernetes-external-secrets.git
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
   - git fetch
+  - git status
+  - touch robots.txt
+  - git add .
+  - git commit -m "Testing robots"
+  - git push origin dev
   # package-lock.json was introduced in npm@5
   - "[[ $(node -v) =~ ^v9.*$ ]] || npm install -g npm@latest"
   - npm install -g greenkeeper-lockfile
