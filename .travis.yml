@@ -24,6 +24,7 @@ before_install:
   - git fetch
   - git status
   - touch robots.txt
+  - git checkout dev
   - git add .
   - git commit -m "Testing robots"
   - git push origin dev
