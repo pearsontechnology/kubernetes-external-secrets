@@ -20,6 +20,7 @@ docker build -t pearsontechnology/kubernetes-external-secrets:$SHA .
 docker tag pearsontechnology/kubernetes-external-secrets:$SHA pearsontechnology/kubernetes-external-secrets:$TAG
 docker tag pearsontechnology/kubernetes-external-secrets:$SHA pearsontechnology/kubernetes-external-secrets:latest
 
+git checkout master
 git add --all && git commit -m "chore(release): pearsontechnology/kubernetes-external-secrets:$TAG [ci skip]" && git tag $TAG
 
 echo "Pushing release assets to master"
