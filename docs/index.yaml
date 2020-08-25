@@ -2,6 +2,24 @@ apiVersion: v1
 entries:
   kubernetes-external-secrets:
   - apiVersion: v1
+    appVersion: 3.0.2
+    created: "2020-08-25T12:44:05.445523599Z"
+    description: Kubernetes External Secrets CustomResourceDefinition
+    digest: 928218d4b49afdbd8537f5696822957f72a73f66f103c62dbd1f8aac7caf1f2f
+    home: https://github.com/pearsontechnology/kubernetes-external-secrets
+    keywords:
+    - kubernetes-external-secrets
+    - secrets
+    maintainers:
+    - email: ishansd94@gmail.com
+      name: ishansd94
+    name: kubernetes-external-secrets
+    sources:
+    - http://external-charts.prsn.io
+    urls:
+    - kubernetes-external-secrets-3.0.2.tgz
+    version: 3.0.2
+  - apiVersion: v1
     appVersion: 3.0.1
     created: "2020-01-14T14:07:36.741642044Z"
     description: Kubernetes External Secrets CustomResourceDefinition
@@ -55,4 +73,4 @@ entries:
     urls:
     - http://external-charts.prsn.io/kubernetes-external-secrets-2.2.2.tgz
     version: 2.2.2
-generated: "2020-01-14T14:07:36.740527878Z"
+generated: "2020-08-25T12:44:05.443961793Z"
