@@ -42,7 +42,7 @@ replicaCount: 1
 
 image:
   repository: pearsontechnology/kubernetes-external-secrets
-  tag: 3.0.3
+  tag: 3.0.4
   pullPolicy: IfNotPresent
 
 nameOverride: ""
