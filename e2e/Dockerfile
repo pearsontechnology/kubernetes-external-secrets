@@ -6,6 +6,7 @@ RUN npm install npm@6.4.1 -g
 RUN mkdir /app
 WORKDIR /app
 COPY package.json package-lock.json /app/
+RUN npm cache clean --force
 RUN npm install
 
 # Copy app to source directory
