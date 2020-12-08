@@ -1,12 +1,11 @@
 FROM node:14.15.1-alpine
 
-RUN npm install npm@6.4.1 -g
+# RUN npm install npm@6.4.1 -g
 
 # Setup source directory
 RUN mkdir /app
 WORKDIR /app
 COPY package.json package-lock.json /app/
-RUN npm cache clean --force
 RUN npm install
 
 # Copy app to source directory
